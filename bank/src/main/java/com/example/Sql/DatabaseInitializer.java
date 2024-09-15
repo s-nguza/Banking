@@ -14,7 +14,9 @@ public class DatabaseInitializer {
         String createCustomersTable = "CREATE TABLE IF NOT EXISTS Customers (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT NOT NULL, " +
-                "email TEXT NOT NULL, " +
+                "surname TEXT NOT NULL"+
+                "Age INTEGER NOT NULL"+
+                "email TEXT NOT NULL" +
                 "phone TEXT NOT NULL);";
 
         // SQL to create Accounts table
