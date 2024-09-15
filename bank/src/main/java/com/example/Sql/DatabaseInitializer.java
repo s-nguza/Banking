@@ -7,18 +7,36 @@ import java.sql.SQLException;
 
 public class DatabaseInitializer {
 
-    private static final String DB_URL = "jdbc:sqlite:your_database_name.db";
+    private static final String DB_URL = "jdbc:sqlite:banking_application.db";
 
     public static void createTables() {
-        String createUsersTable = "CREATE TABLE IF NOT EXISTS Users (" +
-                                  "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                  "username TEXT NOT NULL, " +
-                                  "email TEXT NOT NULL)";
+        // SQL to create Customers table
+        String createCustomersTable = "CREATE TABLE IF NOT EXISTS Customers (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT NOT NULL, " +
+                "email TEXT NOT NULL, " +
+                "phone TEXT NOT NULL);";
+
+        // SQL to create Accounts table
+        String createAccountsTable = "CREATE TABLE IF NOT EXISTS Accounts (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "customer_id INTEGER NOT NULL, " +
+                "account_type TEXT NOT NULL, " +
+                "balance REAL NOT NULL, " +
+                "FOREIGN KEY (customer_id) REFERENCES Customers(id));";
+
+       
 
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement()) {
-            stmt.execute(createUsersTable);
-            System.out.println("Users table created successfully.");
+
+            // Execute the table creation statements
+            stmt.execute(createCustomersTable);
+            stmt.execute(createAccountsTable);
+            stmt.execute(createTransactionsTable);
+
+            System.out.println("Tables created successfully.");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
