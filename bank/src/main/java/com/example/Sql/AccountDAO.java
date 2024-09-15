@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
-public class AcoountDAO {
+public class AccountDAO {
     private static final String DB_URL =  "jdbc:sqlite:banking_application.db";
 
     public void AccountDetails(int customer_id,String account_type ,double balance){

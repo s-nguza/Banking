@@ -43,8 +43,7 @@ public class DatabaseInitializer {
             stmt.execute(createCustomersTable); 
             stmt.execute(createAccountsTable);
             stmt.execute(createTransactionsTable);
-            System.out.println(createTransactionsTable);
-            System.out.println(createAccountsTable);
+            
 
             System.out.println("Tables created successfully.");
 
