@@ -14,7 +14,7 @@ public class AccountDAO {
         try (Connection con = DriverManager.getConnection(DB_URL);
             PreparedStatement ps = con.prepareStatement(Sql)) {
                 ps.setInt(1, customer_id);
-                ps.setString(2, Sql);
+                ps.setString(2, account_type);
                 ps.setDouble(3, balance);
 
                 ps.executeUpdate();
