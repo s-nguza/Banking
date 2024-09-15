@@ -25,7 +25,14 @@ public class DatabaseInitializer {
                 "balance REAL NOT NULL, " +
                 "FOREIGN KEY (customer_id) REFERENCES Customers(id));";
 
-       
+        // SQL to create Transactions table
+        String createTransactionsTable = "CREATE TABLE IF NOT EXISTS Transactions (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "account_id INTEGER NOT NULL, " +
+                "transaction_type TEXT NOT NULL, " +
+                "amount REAL NOT NULL, " +
+                "transaction_date TEXT NOT NULL, " +
+                "FOREIGN KEY (account_id) REFERENCES Accounts(id));";
 
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement()) {
