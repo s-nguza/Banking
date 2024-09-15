@@ -14,11 +14,11 @@ public class DatabaseInitializer {
         String createCustomersTable = "CREATE TABLE IF NOT EXISTS Customers (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT NOT NULL, " +
-                "surname TEXT NOT NULL,"+
-                "Age INTEGER NOT NULL,"+
-                "email TEXT NOT NULL UNIQUE," +
-                "phone TEXT NOT NULL);";
-
+                "surname TEXT NOT NULL, " +
+                "age INTEGER NOT NULL, " +
+                "email TEXT NOT NULL UNIQUE, " + 
+                "password TEXT NOT NULL);"; // Added password field
+    
         // SQL to create Accounts table
         String createAccountsTable = "CREATE TABLE IF NOT EXISTS Accounts (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -26,7 +26,7 @@ public class DatabaseInitializer {
                 "account_type TEXT NOT NULL, " +
                 "balance REAL NOT NULL, " +
                 "FOREIGN KEY (customer_id) REFERENCES Customers(id));";
-
+    
         // SQL to create Transactions table
         String createTransactionsTable = "CREATE TABLE IF NOT EXISTS Transactions (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -35,20 +35,29 @@ public class DatabaseInitializer {
                 "amount REAL NOT NULL, " +
                 "transaction_date TEXT NOT NULL, " +
                 "FOREIGN KEY (account_id) REFERENCES Accounts(id));";
-
+    
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement()) {
-
-            // Execute the table creation statements
+    
+            // // Drop the Customers table if it already exists
+            // stmt.execute("DROP TABLE IF EXISTS Customers;");
+    
+            // Create the Customers table
             stmt.execute(createCustomersTable); 
+    
+            // // Drop the Accounts table if it already exists (optional)
+            // stmt.execute("DROP TABLE IF EXISTS Accounts;");
+            // Create the Accounts table
             stmt.execute(createAccountsTable);
+    
+            // Drop the Transactions table if it already exists (optional)
+            // stmt.execute("DROP TABLE IF EXISTS Transactions;");
+            // Create the Transactions table
             stmt.execute(createTransactionsTable);
-            
-
+    
             System.out.println("Tables created successfully.");
-
+    
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-}
+    }}
