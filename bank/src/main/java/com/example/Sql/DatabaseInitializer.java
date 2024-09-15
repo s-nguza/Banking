@@ -14,9 +14,9 @@ public class DatabaseInitializer {
         String createCustomersTable = "CREATE TABLE IF NOT EXISTS Customers (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT NOT NULL, " +
-                "surname TEXT NOT NULL"+
-                "Age INTEGER NOT NULL"+
-                "email TEXT NOT NULL" +
+                "surname TEXT NOT NULL,"+
+                "Age INTEGER NOT NULL,"+
+                "email TEXT NOT NULL UNIQUE," +
                 "phone TEXT NOT NULL);";
 
         // SQL to create Accounts table
@@ -40,9 +40,11 @@ public class DatabaseInitializer {
              Statement stmt = conn.createStatement()) {
 
             // Execute the table creation statements
-            stmt.execute(createCustomersTable);
+            stmt.execute(createCustomersTable); 
             stmt.execute(createAccountsTable);
             stmt.execute(createTransactionsTable);
+            System.out.println(createTransactionsTable);
+            System.out.println(createAccountsTable);
 
             System.out.println("Tables created successfully.");
 
