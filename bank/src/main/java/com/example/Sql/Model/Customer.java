@@ -1,4 +1,4 @@
-package com.example.Respository;
+package com.example.Sql.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
