@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Login Page</title>
+    <style>
+        body {
+            background-color: lightgray;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+        form {
+            margin: 0 auto;
+            width: 300px;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+
+    <!-- Error message if login fails -->
+    <div th:if="${param.error}">
+        <p style="color: red;">Invalid email or password. Please try again.</p>
+    </div>
+
+    <!-- Logout message -->
+    <div th:if="${param.logout}">
+        <p style="color: green;">You have been successfully logged out.</p>
+    </div>
+
+    <!-- Login Form -->
+    <form th:action="@{/login}" method="post">
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email" required/>
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required/>
+        </div>
+
+        <div>
+            <input type="submit" value="Sign In"/>
+        </div>
+    </form>
+</body>
+</html>
