@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css"> <!-- Link to your CSS -->
+</head>
+<body>
+    <header>
+        <h1>Welcome, <span th:text="${user.username}">Username</span></h1>
+        <nav>
+            <ul>
+                <li><a href="/account-details">Account Details</a></li>
+                <li><a href="/transactions">Transactions</a></li>
+                <li><a href="/transfer">Transfer Funds</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Quick Overview</h2>
+        <div>
+            <p>Account Balance: <span th:text="${user.balance}">0.00</span></p>
+            <p>Last Login: <span th:text="${user.lastLogin}">N/A</span></p>
+        </div>
+    </section>
+</body>
+</html>

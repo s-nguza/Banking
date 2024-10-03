@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer Funds</title>
+    <link rel="stylesheet" href="/css/transfer.css">
+</head>
+<body>
+    <header>
+        <h1>Transfer Funds</h1>
+        <nav>
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/account-details">Account Details</a></li>
+                <li><a href="/transactions">Transactions</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Make a Transfer</h2>
+        <form method="post" action="/transfer">
+            <label for="recipient">Recipient Account:</label>
+            <input type="text" id="recipient" name="recipient" required>
+            
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+
+            <button type="submit">Transfer</button>
+        </form>
+    </section>
+</body>
+</html>
