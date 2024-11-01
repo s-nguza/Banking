@@ -1,4 +1,4 @@
-package com.example.Sql.Repositorty;
+package com.example.Sql.Repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
